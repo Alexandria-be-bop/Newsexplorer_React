@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 26px;
+  border-bottom: 1px solid #d1d2d6;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.header__title {
+  font-family: Roboto Slab;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  padding-left: 100px;
+}
+
+.header__navbar {
+  display: flex;
+  gap: 42px;
+  padding-right: 104px;
+}
+
+.header__button {
+  border: none;
+  background-color: transparent;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__button-signin {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border: solid 1px;
+  border-radius: 100px;
+  padding: 12px;
+  width: 152px;
+}

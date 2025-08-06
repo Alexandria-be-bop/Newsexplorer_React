@@ -7,4 +7,10 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  resolve: {
+    extensions: [".jsx", ".js", ".ts", ".tsx"],
+  },
+  build: {
+    sourcemap: false,
+  },
 });
