@@ -1,0 +1,7 @@
+@import url(./components/Main/Main.css);
+@import url(./vendor/normalize.css);
+@font-face {
+  font-family: "Roboto Slab";
+  src: url(./vendor/final-project_fonts_latin/inter-400-regular.woff)
+    format("opentype");
+}
