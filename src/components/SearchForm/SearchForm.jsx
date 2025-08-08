@@ -9,7 +9,7 @@ function SearchForm() {
       </p>
       <div>
         <form className="SearchForm__form">
-          <input className="SearchForm__input"></input>
+          <input className="SearchForm__input" placeholder="Enter topic"></input>
           <button
             type="submit"
             className="SearchForm__button"
