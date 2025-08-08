@@ -1,5 +1,5 @@
 import "./Header.css";
-import union from "../../assets/union.svg";
+import logoutWhite from "../../assets/logout_white.svg";
 
 function Header({ isLoggedIn }) {
   const currentUser = { name: "Elise" };
@@ -14,7 +14,7 @@ function Header({ isLoggedIn }) {
             <button className="header__button header__button-signin">
               {currentUser.name}
               <img
-                src={union}
+                src={logoutWhite}
                 alt="union sign"
               />
             </button>

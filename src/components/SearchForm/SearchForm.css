@@ -1,8 +1,10 @@
 .SearchForm {
   display: flex;
   flex-direction: column;
-  padding: 80px 0 80px;
+  padding: 186px 0 80px;
   align-items: center;
+  background: url("../../assets/background.svg") center no-repeat ;
+  background-size: cover;
 }
 
 .SearchForm__title {
@@ -15,6 +17,7 @@
   margin: 0;
   padding-bottom: 32px;
   width: 608px;
+  color: white;
 }
 
 .SearchForm__subtitle {
@@ -26,6 +29,7 @@
   line-height: 24px;
   margin: 0;
   padding-bottom: 88px;
+  color: white;
 }
 
 .SearchForm__form {
