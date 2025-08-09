@@ -27,6 +27,8 @@
 }
 
 .header__button {
+  display: flex;
+  align-items: center;
   border: none;
   background-color: transparent;
   font-family: Roboto;
@@ -36,6 +38,8 @@
   cursor: pointer;
   padding: 0;
   color: white;
+  text-decoration: none;
+  
 }
 
 .header__button-signin {

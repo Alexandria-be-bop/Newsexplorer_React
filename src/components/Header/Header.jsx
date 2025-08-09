@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logoutWhite from "../../assets/logout_white.svg";
 
@@ -7,10 +8,20 @@ function Header({ isLoggedIn }) {
     <div className="header">
       <h1 className="header__title">NewsExplorer</h1>
       <div className="header__navbar">
-        <button className="header__button">Home</button>
+        <Link
+          to="/"
+          className="header__button"
+        >
+          Home
+        </Link>
         {isLoggedIn ? (
           <>
-            <button className="header__button">Saved articles</button>
+            <Link
+              to="/saved_news"
+              className="header__button"
+            >
+              Saved articles
+            </Link>
             <button className="header__button header__button-signin">
               {currentUser.name}
               <img

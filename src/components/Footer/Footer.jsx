@@ -1,6 +1,7 @@
 import "./Footer.css";
 import github from "../../assets/github.svg";
 import facebook from "../../assets/facebook.svg";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -10,8 +11,18 @@ function Footer() {
       </p>
       <div className="footer__links">
         <div className="footer__nav">
-          <a href="#" className="footer__button">Home</a>
-          <a href="https://tripleten.com/software-engineer/" className="footer__button">TripleTen</a>
+          <Link
+            to="/"
+            className="footer__button"
+          >Home
+          </Link>
+          <a
+            href="https://tripleten.com/software-engineer/"
+            className="footer__button"
+            target="_blank"
+          >
+            TripleTen
+          </a>
         </div>
         <div className="footer__socials">
           <a
