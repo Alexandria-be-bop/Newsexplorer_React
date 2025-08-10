@@ -1,4 +1,4 @@
-.SearchForm {
+.search-form {
   display: flex;
   flex-direction: column;
   padding: 186px 0 80px;
@@ -7,7 +7,7 @@
   background-size: cover;
 }
 
-.SearchForm__title {
+.search-form__title {
   display: flex;
   justify-content: center;
   font-family: "Roboto Slab", "Times New Roman", serif;
@@ -20,7 +20,7 @@
   color: white;
 }
 
-.SearchForm__subtitle {
+.search-form__subtitle {
   display: flex;
   justify-content: center;
   font-family: "Roboto Slab", "Times New Roman", serif;
@@ -32,12 +32,12 @@
   color: white;
 }
 
-.SearchForm__form {
+.search-form__form {
   display: flex;
   justify-content: center;
 }
 
-.SearchForm__input {
+.search-form__input {
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 400;
   font-size: 16px;
@@ -48,7 +48,7 @@
   padding: 21px 208px 21px 24px;
 }
 
-.SearchForm__button {
+.search-form__button {
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 500;
   font-size: 18px;
@@ -59,4 +59,12 @@
   border-style: none;
   padding: 20px 56px;
   margin-left: -170px;
+}
+
+.search-form__button:hover {
+  background-color: #347eff;
+}
+
+.search-form__button:active {
+  background-color: #2a65cc;
 }
