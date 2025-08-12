@@ -1,5 +1,6 @@
 import "./ModalWithForm.css";
 import closeBtn from "../../assets/close-btn.svg";
+import { useEffect } from "react";
 
 function ModalWithForm({
   children,
@@ -12,8 +13,24 @@ function ModalWithForm({
   onSubmit,
   disabled = false,
 }) {
+  useEffect(() => {
+    const handleEscClose = (e) => e.key === "Escape" && closeActiveModal();
+
+    if (activeModal) {
+      document.addEventListener("keydown", handleEscClose);
+      return () => document.removeEventListener("keydown", handleEscClose);
+    }
+  }, [activeModal, closeActiveModal]);
+
   return (
-    <div className={`modal ${activeModal && "modal_opened"}`}>
+    <div
+      className={`modal ${activeModal && "modal_opened"}`}
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) {
+          closeActiveModal();
+        }
+      }}
+    >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button
