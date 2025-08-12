@@ -39,13 +39,16 @@ function ModalWithForm({
             >
               {buttonText}
             </button>
-            <button
-              type="button"
-              className="modal__button modal__button-gray"
-              onClick={altButtonOnClick}
-            >
-              {altButtonText}
-            </button>
+            <div className="modal__alt-button-container">
+              <p className="modal__button-text">or</p>
+              <button
+                type="button"
+                className="modal__button"
+                onClick={altButtonOnClick}
+              >
+                {altButtonText}
+              </button>
+            </div>
           </div>
         </form>
       </div>

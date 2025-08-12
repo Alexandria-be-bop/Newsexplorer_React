@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logoutWhite from "../../assets/logout_white.svg";
 
-function Header({ isLoggedIn }) {
+function Header({ isLoggedIn, onLoginClick }) {
   const currentUser = { name: "Elise" };
   return (
     <div className="header">
@@ -32,7 +32,10 @@ function Header({ isLoggedIn }) {
           </>
         ) : (
           <>
-            <button className="header__button header__button-signin">
+            <button
+              className="header__button header__button-signin"
+              onClick={onLoginClick}
+            >
               Sign in
             </button>
           </>
