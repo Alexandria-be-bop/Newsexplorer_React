@@ -24,7 +24,7 @@ padding: 32px 0 26px;
 }
 
 .footer__button {
-  font-family: Roboto;
+font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;

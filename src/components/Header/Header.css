@@ -11,7 +11,7 @@
 }
 
 .header__title {
-  font-family: Roboto Slab;
+font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -31,7 +31,7 @@
   align-items: center;
   border: none;
   background-color: transparent;
-  font-family: Roboto;
+font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
