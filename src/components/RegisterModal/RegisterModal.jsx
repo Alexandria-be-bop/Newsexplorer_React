@@ -8,6 +8,7 @@ export default function RegisterModal({
   closeActiveModal,
   onLoginClick,
 }) {
+  const [emailError, setEmailError] = useState("");
 
   const emailId = useId();
   const passwordId = useId();
@@ -52,7 +53,7 @@ export default function RegisterModal({
     if (isEmailValid(e.target.value)) {
       setEmailError("");
     } else {
-      setEmailError("Invalid email");
+      setEmailError("Invalid email address");
     }
   };
 
@@ -69,7 +70,7 @@ export default function RegisterModal({
     >
       <label
         htmlFor={emailId}
-        className="modal__label"
+        className="modal__label modal__error-field"
       >
         Email
         <input
@@ -84,6 +85,7 @@ export default function RegisterModal({
           onBlur={handleEmailValidation}
           autoComplete="email"
         />
+        <p className={`modal__invalid-email`}>{emailError}</p>
       </label>
 
       <label
