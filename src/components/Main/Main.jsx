@@ -4,12 +4,12 @@ import "./Main.css";
 import Preloader from "../Preloader/Preloader";
 
 function Main() {
-  const isLoading = true;
+  const isLoading = false;
 
   return (
     <div className="main">
       <SearchForm />
-      <div>{isLoading ? <Preloader /> : <Content />}</div>
+      <div>{isLoading ? <Preloader /> : <></>}</div>
       <About />
     </div>
   );

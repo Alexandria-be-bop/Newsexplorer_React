@@ -8,7 +8,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
-  const [isLoggedIn] = useState(false);
+  const [isLoggedIn] = useState(true);
 
   const [activeModal, setActiveModal] = useState("");
 

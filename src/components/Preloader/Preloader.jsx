@@ -8,8 +8,4 @@ function Preloader() {
   );
 }
 
-//   const isLoading = true;
-
-//   <div>{isLoading ? <Preloader /> : <Content />}</div>
-
 export default Preloader;
