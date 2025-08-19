@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Header from "../Header/Header.jsx/";
+import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -10,11 +10,6 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 function App() {
   const [isLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
-  // const [articles, setArticles] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState("");
-  // const [hasSearched, setHasSearched] = useState(false);
-
 
   const onLoginClick = () => {
     setActiveModal("login-modal");
@@ -39,16 +34,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <Main
-                  // onSearch={handleSearch}
-                  // articles={articles}
-                  // isLoading={isLoading}
-                  // error={error}
-                  // hasSearched={hasSearched}
-                  isLoggedIn={isLoggedIn}
-                />
-              }
+              element={<Main isLoggedIn={isLoggedIn} />}
             />
             <Route
               path="/saved_news"

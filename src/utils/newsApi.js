@@ -1,4 +1,4 @@
-import { APIkey } from "./constants";
+import { NEWS_API_KEY } from "./constants";
 import apiCheck from "./apiCheck";
 
 const newsApiBaseUrl = import.meta.env.PROD
@@ -20,6 +20,6 @@ export async function searchNews(q) {
   });
 
   const url = `${newsApiBaseUrl}?${params.toString()}`;
-  const key = { headers: { "X-Api-Key": APIkey } };
+  const key = { headers: { "X-Api-Key": NEWS_API_KEY } };
   return fetch(url, key).then(apiCheck);
 }

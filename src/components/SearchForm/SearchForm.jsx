@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./SearchForm.css";
-import { searchNews } from "../../utils/newsApi";
-
-function SearchForm() {
+function SearchForm({ onSearch }) {
   const [q, setQ] = useState("");
   const [error, setError] = useState("");
 
@@ -11,12 +9,8 @@ function SearchForm() {
     if (!q.trim()) {
       return setError("Please add topic");
     }
-    try {
-      const data = await searchNews(q);
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
+    setError("");
+    onSearch && onSearch(q.trim());
   };
 
   return (
