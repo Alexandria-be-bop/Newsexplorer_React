@@ -6,10 +6,15 @@ import Footer from "../Footer/Footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import { searchNews } from "../../utils/newsApi";
 
 function App() {
   const [isLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [hasSearched, setHasSearched] = useState(false);
 
   const onLoginClick = () => {
     setActiveModal("login-modal");
@@ -23,6 +28,23 @@ function App() {
     setActiveModal("");
   };
 
+  const onSearch = async (topic) => {
+    setHasSearched(true);
+    setIsLoading(true);
+    setError("");
+    try {
+      const data = await searchNews(topic);
+      setArticles(Array.isArray(data.articles) ? data.articles : []);
+    } catch {
+      setArticles([]);
+      setError(
+        "Sorry, something went wrong during the request. Please try again later."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <BrowserRouter>
       <div className="page">
@@ -34,7 +56,16 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Main isLoggedIn={isLoggedIn} />}
+              element={
+                <Main
+                  onSearch={onSearch}
+                  isLoggedIn={isLoggedIn}
+                  articles={articles}
+                  isLoading={isLoading}
+                  error={error}
+                  hasSearched={hasSearched}
+                />
+              }
             />
             <Route
               path="/saved_news"

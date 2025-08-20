@@ -1,7 +1,7 @@
 import "./NewsCard.css";
 import bookmark from "../../assets/bookmark.svg";
 
-export default function NewsCard({ article }) {
+function NewsCard({ article }) {
   const { source, title, publishedAt, description, urlToImage, url } = article;
 
   const date = publishedAt
@@ -12,16 +12,24 @@ export default function NewsCard({ article }) {
       })
     : "";
 
+  const image = urlToImage
+    ? { backgroundImage: `url("${urlToImage}")` }
+    : undefined;
+
   return (
     <article className="card">
-      <a
+      {/* <a
         className="card__overlay"
         href={url}
         target="_blank"
         rel="noreferrer"
         aria-label={title}
-      />
-      <div className="card__image-wrap">
+      /> */}
+
+      <div
+        className="card__image"
+        style={image}
+      >
         <button className="card__button">
           <img
             className="card__button-img"
@@ -29,11 +37,6 @@ export default function NewsCard({ article }) {
             alt="bookmark img"
           />
         </button>
-        <img
-          className="card__image"
-          src={urlToImage}
-          alt={title}
-        />
       </div>
       <div className="card__body">
         <p className="card__date">{date}</p>
@@ -44,3 +47,5 @@ export default function NewsCard({ article }) {
     </article>
   );
 }
+
+export default NewsCard;

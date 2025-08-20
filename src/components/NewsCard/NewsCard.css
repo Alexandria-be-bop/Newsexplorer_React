@@ -5,33 +5,28 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 224px;
+  width: 400px;
 }
 
 .card__overlay {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-}
-
-.card__image-wrap {
-  position: relative;
-  aspect-ratio: 16/9;
-  background: #f0f0f0;
+  cursor: pointer;
 }
 
 .card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  position: relative;
+  aspect-ratio: 16/9;
   background: #e6e8eb;
+  background-size: cover;
+  background-position: center;
+  border: 0;
 }
 
 .card__button {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 24px;
+  right: 24px;
   display: flex;
   justify-content: center;
   padding: 0;
@@ -39,7 +34,6 @@
   background-color: #fff;
   border-radius: 8px;
   padding: 8px;
-  cursor: pointer;
 }
 
 .card__button-img {
@@ -66,6 +60,11 @@
 }
 
 .card__title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   font-family: "Roboto Slab", "Times New Roman", serif;
   font-weight: 400;
   font-size: 22px;
@@ -76,15 +75,24 @@
 }
 
 .card__description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
   font-family: Roboto;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   color: #2f2f2f;
   margin: 0 0 18px;
+  height: 110px;
+  overflow: hidden;
 }
 
 .card__source {
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: Roboto Slab;
   font-weight: 700;
   font-size: 16px;
@@ -95,7 +103,23 @@
   margin: 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .card {
+    width: 224px;
+  }
+
+  .card__button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__body {
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 320px) {
   .card {
     width: 288px;
   }
