@@ -18,13 +18,13 @@ function NewsCard({ article }) {
 
   return (
     <article className="card">
-      {/* <a
+      <a
         className="card__overlay"
         href={url}
         target="_blank"
         rel="noreferrer"
         aria-label={title}
-      /> */}
+      />
 
       <div
         className="card__image"

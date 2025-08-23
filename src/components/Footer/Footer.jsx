@@ -14,7 +14,8 @@ function Footer() {
           <Link
             to="/"
             className="footer__button"
-          >Home
+          >
+            Home
           </Link>
           <a
             href="https://tripleten.com/software-engineer/"

@@ -86,7 +86,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 645px) {
   .search {
     padding: 32px 16px;
   }

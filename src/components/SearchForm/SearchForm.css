@@ -68,3 +68,37 @@
 .search-form__button:active {
   background-color: #2a65cc;
 }
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 645px) {
+  .search-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .search-form__title {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 40px;
+    padding-bottom: 32px;
+    width: 285px;
+  }
+
+  .search-form__subtitle {
+    width: 288px;
+    padding-bottom: 122px;
+  }
+
+  .search-form__input {
+    width: 288px;
+    padding: 17px 16px;
+    box-sizing: border-box;
+  }
+
+  .search-form__button {
+    margin-left: 0;
+  }
+}
