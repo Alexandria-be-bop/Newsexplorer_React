@@ -21,7 +21,7 @@ export async function searchNews(q) {
     sortBy: "publishedAt",
   });
 
-  const url = `${newsApiBaseUrl} ${params.toString()}`;
+  const url = `${newsApiBaseUrl}?${params.toString()}`;
   const key = { headers: { "X-Api-Key": NEWS_API_KEY } };
   return fetch(url, key).then(apiCheck);
 }
