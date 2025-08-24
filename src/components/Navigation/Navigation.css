@@ -1,52 +1,4 @@
 .nav__button {
-  background-color: #4caf50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.nav {
-  position: relative;
-  display: inline-block;
-}
-
-.nav__content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.nav__content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.nav__content a:hover {
-  background-color: #f1f1f1;
-}
-
-.nav:hover .dropdown-content {
-  display: block;
-}
-
-.nav:hover .dropbtn {
-  background-color: #3e8e41;
-}
-
-.nav__navbar {
-  display: flex;
-  gap: 42px;
-  padding-right: 104px;
-}
-
-.nav__button {
   position: relative;
   display: flex;
   align-items: center;
@@ -82,4 +34,19 @@
   border-radius: 100px;
   padding: 12px;
   width: 152px;
+}
+
+.nav__navbar {
+  display: flex;
+  gap: 42px;
+  padding-right: 104px;
+}
+
+/* black theme for saved articles */
+.nav--black .nav__button {
+  color: #000;
+  text-decoration: none;
+}
+.nav--black .nav__button--active::after {
+  background: #000;
 }

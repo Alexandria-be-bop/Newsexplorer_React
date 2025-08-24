@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import { searchNews } from "../../utils/newsApi";
+import SavedArticles from "../SavedArticles/SavedArticles";
 
 function App() {
   const [isLoggedIn] = useState(true);
@@ -69,7 +70,7 @@ function App() {
             />
             <Route
               path="/saved_news"
-              element={<></>}
+              element={<SavedArticles />}
             />
           </Routes>
         </div>

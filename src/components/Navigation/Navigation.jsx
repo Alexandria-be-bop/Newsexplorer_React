@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logoutWhite from "../../assets/logout_white.svg";
+import logoutBlack from "../../assets/logout_black.svg";
 
-function Navigation({ isLoggedIn, onLoginClick }) {
+function Navigation({ isLoggedIn, onLoginClick, theme }) {
   const currentUser = { name: "Elise" };
   // const mobileView = window.matchMedia("(max-width: 600px)");
   return (
     <>
-      <div className="nav__navbar nav___navbar-full">
+      <div className={`nav__navbar ${theme}`}>
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `nav__button ${isActive ? "nav__button--active" : ""}`
+            `nav__button  ${isActive ? "nav__button--active" : ""}`
           }
         >
           Home
@@ -29,7 +30,7 @@ function Navigation({ isLoggedIn, onLoginClick }) {
             <button className="nav__button nav__button-signin">
               {currentUser.name}
               <img
-                src={logoutWhite}
+                src={theme === "nav--black" ? logoutBlack : logoutWhite}
                 alt="union sign"
               />
             </button>
