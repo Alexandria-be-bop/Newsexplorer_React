@@ -8,7 +8,7 @@ function SearchForm({ onSearch }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!q.trim()) {
-      return setError("Please add topic");
+      return setError("Please enter a keyword");
     }
     setError("");
     onSearch && onSearch(q.trim());

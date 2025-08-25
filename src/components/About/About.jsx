@@ -1,10 +1,11 @@
 import "./About.css";
+import author from "../../assets/author.jpg";
 
 function About() {
   return (
     <div className="about">
       <img
-        src="https://media.licdn.com/dms/image/v2/D4E35AQHwg0Xr9vCPog/profile-framedphoto-shrink_400_400/B4EZg3.aSPGoAg-/0/1753285764585?e=1756152000&v=beta&t=zjRsHA3lglr80eM5p4qw4Yu6ufcZKOT5Hrq1UEF4K-g"
+        src={author}
         className="about__image"
       ></img>
       <div className="about__info">

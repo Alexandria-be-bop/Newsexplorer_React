@@ -4,8 +4,8 @@ import { useLocation } from "react-router-dom";
 
 function Header({ isLoggedIn, onLoginClick }) {
   const { pathname } = useLocation();
-  const theme = pathname === "/saved_news" ? "nav--black" : "";
-  const headerTheme = pathname === "/saved_news" ? "header--black" : "";
+  const theme = pathname === "/saved-news" ? "nav--black" : "";
+  const headerTheme = pathname === "/saved-news" ? "header--black" : "";
 
   return (
     <div className="header">

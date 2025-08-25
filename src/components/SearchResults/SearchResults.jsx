@@ -8,7 +8,7 @@ function SearchResults({
   articles = [],
   isLoading = false,
   hasSearched = false,
-  isLoggedIn = false,
+  isLoggedIn,
 }) {
   const [visible, setVisible] = useState(3);
   useEffect(() => setVisible(3), [articles]);

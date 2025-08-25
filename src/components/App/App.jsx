@@ -6,8 +6,8 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
-import { searchNews } from "../../utils/newsApi";
 import SavedArticles from "../SavedArticles/SavedArticles";
+import { searchNews } from "../../utils/newsApi";
 
 function App() {
   const [isLoggedIn] = useState(true);
@@ -38,9 +38,7 @@ function App() {
       setArticles(Array.isArray(data.articles) ? data.articles : []);
     } catch {
       setArticles([]);
-      setError(
-        "Sorry, something went wrong during the request. Please try again later."
-      );
+      setError("Sorry, something went wrong. Please try again later.");
     } finally {
       setIsLoading(false);
     }
@@ -69,7 +67,7 @@ function App() {
               }
             />
             <Route
-              path="/saved_news"
+              path="/saved-news"
               element={<SavedArticles />}
             />
           </Routes>

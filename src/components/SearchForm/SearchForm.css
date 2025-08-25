@@ -69,11 +69,23 @@
   background-color: #2a65cc;
 }
 
+.search-form__error {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 12px;
+  position: absolute;
+  padding-left: 40px;
+  padding-top: 7px;
+  margin: 0px;
+  color: white;
+}
+
 @media screen and (max-width: 768px) {
 }
 
 @media screen and (max-width: 645px) {
   .search-form__form {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -100,5 +112,12 @@
 
   .search-form__button {
     margin-left: 0;
+  }
+
+  .search-form__error {
+    position: absolute;
+    top: 470px;
+    padding-left: 80px;
+    padding-top: 0;
   }
 }

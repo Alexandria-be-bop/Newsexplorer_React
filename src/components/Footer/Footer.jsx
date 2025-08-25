@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <p className="footer__date">
         &copy; {new Date().getFullYear()} Supersite, Powered by News API
       </p>
@@ -47,7 +47,7 @@ function Footer() {
           </a>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
