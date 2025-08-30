@@ -15,7 +15,7 @@ function SavedArticles({
     if (articles.length === 0) return "";
     const counts = new Map();
     articles.forEach((a) => {
-      const key = a.keyword.trim();
+      const key = (a.keyword || "").trim();
       if (!key) return;
       counts.set(key, (counts.get(key) || 0) + 1);
     });
@@ -31,39 +31,44 @@ function SavedArticles({
 
   if (!currentUser) {
     return (
-      <div className="saved-articles">
+      <section className="saved-articles">
         <h2 className="saved-articles__title">Saved articles</h2>
         <p className="saved-articles__message">
           Please sign in to view your saved articles.
         </p>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="saved-articles">
-      <h2 className="saved-articles__title">Saved articles</h2>
-      <h3 className="saved-articles__user-info">
-        {articles.length === 0 
-          ? `${currentUser.name}, you have no saved articles yet.`
-          : `${currentUser.name}, you have ${articles.length} saved article${articles.length !== 1 ? "s" : ""}`
-        }
-      </h3>
-      
-      {articles.length === 0 ? (
-        <p className="saved-articles__keywords">
-          Start saving articles to see them here!
-        </p>
-      ) : (
-        <>
-          {keywordText && (
+    <>
+      <section className="saved-articles">
+        <h2 className="saved-articles__title">Saved articles</h2>
+        <h3 className="saved-articles__user-info">
+          {articles.length === 0
+            ? `${currentUser.name}, you have no saved articles yet.`
+            : `${currentUser.name}, you have ${articles.length} saved article${
+                articles.length !== 1 ? "s" : ""
+              }`}
+        </h3>
+
+        {articles.length === 0 ? (
+          <p className="saved-articles__message">
+            Start saving articles to see them here!
+          </p>
+        ) : (
+          keywordText && (
             <p className="saved-articles__keyword">
               By keywords:{" "}
-              <span className="saved-articles__keywords">{keywordText}</span>
+              <span className="saved-articles__keyword-value">{keywordText}</span>
             </p>
-          )}
-          
-          <ul className="saved-articles__cards">
+          )
+        )}
+      </section>
+
+      {articles.length > 0 && (
+        <section className="saved-articles__cards">
+          <ul className="saved-articles__cards-list">
             {articles.map((article) => (
               <li key={article._id}>
                 <NewsCard
@@ -75,9 +80,9 @@ function SavedArticles({
               </li>
             ))}
           </ul>
-        </>
+        </section>
       )}
-    </div>
+    </>
   );
 }
 
