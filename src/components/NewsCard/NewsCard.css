@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   width: 400px;
+  height: 576px;
 }
 
 .card__overlay {
@@ -23,6 +24,23 @@
   border: 0;
 }
 
+.card__keyword {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
 .card__button {
   position: absolute;
   top: 24px;
@@ -32,8 +50,10 @@
   padding: 0;
   border: none;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .card__button-img {
@@ -45,9 +65,38 @@
   opacity: 100%;
 }
 
+.card__button--saved .card__button-img {
+  opacity: 100%;
+}
+
+.card__tooltip {
+  position: absolute;
+  top: 24px;
+  right: 69px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  background: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.card__button:hover + .card__tooltip,
+.card__tooltip:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
 .card__body {
   padding: 20px 24px 24px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .card__date {
@@ -86,7 +135,6 @@
   line-height: 22px;
   color: #2f2f2f;
   margin: 0 0 18px;
-  height: 110px;
   overflow: hidden;
 }
 
@@ -100,18 +148,24 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #b6bcbf;
-  margin: 0;
+  margin: auto 0 0 0;
 }
 
 @media screen and (max-width: 768px) {
   .card {
     width: 224px;
+    height: 420px;
   }
 
   .card__button {
     position: absolute;
     top: 8px;
     right: 8px;
+  }
+
+  .card__tooltip {
+    top: 8px;
+    right: 55px;
   }
 
   .card__body {
@@ -122,12 +176,18 @@
 @media screen and (max-width: 645px) {
   .card {
     width: 288px;
+    height: 440px;
   }
 
   .card__button {
     position: absolute;
     top: 16px;
     right: 16px;
+  }
+
+  .card__tooltip {
+    top: 16px;
+    right: 65px;
   }
 
   .card__body {

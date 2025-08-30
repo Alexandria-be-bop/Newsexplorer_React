@@ -11,7 +11,7 @@ function ModalWithForm({
   activeModal,
   closeActiveModal,
   onSubmit,
-  disabled = false,
+  disabled,
 }) {
   useEffect(() => {
     const handleEscClose = (e) => e.key === "Escape" && closeActiveModal();
@@ -49,23 +49,31 @@ function ModalWithForm({
         >
           {children}
           <div className="modal__button-container">
-            <button
-              type="submit"
-              className="modal__submit"
-              disabled={disabled}
-            >
-              {buttonText}
-            </button>
-            <div className="modal__alt-button-container">
-              <p className="modal__button-text">or</p>
+            {buttonText && (
               <button
-                type="button"
-                className="modal__button"
-                onClick={altButtonOnClick}
+                type="submit"
+                className="modal__submit"
+                disabled={disabled}
               >
-                {altButtonText}
+                {buttonText}
               </button>
-            </div>
+            )}
+            {altButtonText && (
+              <div
+                className={`modal__alt-button-container ${
+                  !buttonText && "modal__button-left"
+                }`}
+              >
+                {buttonText && <p className="modal__button-text">or</p>}
+                <button
+                  type="button"
+                  className={`modal__button`}
+                  onClick={altButtonOnClick}
+                >
+                  {altButtonText}
+                </button>
+              </div>
+            )}
           </div>
         </form>
       </div>

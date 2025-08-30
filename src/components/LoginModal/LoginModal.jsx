@@ -2,11 +2,12 @@ import { useState, useEffect, useId } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
-export default function LoginModal({
+function LoginModal({
   activeModal,
   closeActiveModal,
   handleLogin,
   newUserRegistration,
+  loginError,
 }) {
   const [data, setData] = useState({ email: "", password: "" });
   const [emailError, setEmailError] = useState("");
@@ -18,11 +19,13 @@ export default function LoginModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin(data);
+    if (handleLogin) {
+      handleLogin(data);
+    }
     setData({ email: "", password: "" });
   };
 
-  // clear fields when not active
+  // clear login fields when not active
   useEffect(() => {
     if (!activeModal) {
       setEmailError("");
@@ -44,6 +47,7 @@ export default function LoginModal({
       setEmailError("Invalid email address");
     }
   };
+
   return (
     <ModalWithForm
       title="Sign in"
@@ -72,7 +76,7 @@ export default function LoginModal({
           onBlur={handleEmailValidation}
           autoComplete="email"
         />
-        <p className={`modal__invalid-email`}>{emailError}</p>
+        <p className={`modal__invalid-input`}>{emailError}</p>
       </label>
 
       <label
@@ -92,6 +96,10 @@ export default function LoginModal({
           autoComplete="current-password"
         />
       </label>
+
+      <p className="modal__invalid-field">{loginError}</p>
     </ModalWithForm>
   );
 }
+
+export default LoginModal;

@@ -8,10 +8,40 @@ function SearchResults({
   articles = [],
   isLoading = false,
   hasSearched = false,
-  isLoggedIn,
+  onToggleSave,
+  getSavedByUrl,
 }) {
   const [visible, setVisible] = useState(3);
+  const [savedByUrl, setSavedByUrl] = useState(new Map());
+
   useEffect(() => setVisible(3), [articles]);
+
+  // Get saved articles map when articles change
+  useEffect(() => {
+    getSavedByUrl()
+      .then((savedMap) => {
+        setSavedByUrl(savedMap);
+      })
+      .catch((error) => {
+        console.error("Error getting saved articles map:", error);
+        setSavedByUrl(new Map());
+      });
+  }, [articles, getSavedByUrl]);
+
+  // Refresh saved articles when toggle save is called
+  const handleToggleSave = async (article) => {
+    await onToggleSave(article);
+    if (getSavedByUrl) {
+      getSavedByUrl()
+        .then(setSavedByUrl)
+        .catch((error) => {
+          console.error("Failed to get saved articles:", error);
+          setSavedByUrl(new Map());
+        });
+    }
+  };
+
+  const isArticleSaved = (articleUrl) => savedByUrl.has(articleUrl);
 
   return (
     <>
@@ -33,11 +63,13 @@ function SearchResults({
           <div className="search">
             <h3 className="search__title">Search results</h3>
             <ul className="search__cards">
-              {articles.slice(0, visible).map((articles, index) => (
+              {articles.slice(0, visible).map((article) => (
                 <NewsCard
-                  key={index}
-                  article={articles}
-                  isLoggedIn={isLoggedIn}
+                  key={article.url}
+                  article={article}
+                  onToggleSave={handleToggleSave}
+                  isSaved={isArticleSaved(article.url)}
+                  isOnSavedPage={false}
                 />
               ))}
             </ul>

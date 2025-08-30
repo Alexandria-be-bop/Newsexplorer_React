@@ -141,11 +141,17 @@
   border: none;
 }
 
+/* moves the alt button to the left when alown */
+.modal__button-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .modal__error-field {
   position: relative;
 }
 
-.modal__invalid-email {
+.modal__invalid-input {
   position: absolute;
   bottom: -3px;
   font-family: Inter, "Open Sans", "Helvetica Neue", sans-serif;
@@ -155,14 +161,17 @@
   color: #ff0000;
 }
 
-.modal__unavailable-email {
-  position: absolute;
-  bottom: -3px;
+.modal__invalid-field {
+  position: relative;
+  bottom: 8px;
   font-family: Inter, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
   color: #ff0000;
+  text-align: center;
+  margin: 0;
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 645px) {
@@ -172,5 +181,16 @@
   .modal__close-btn {
     top: -40px;
     right: -40px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .modal__content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal__content {
+    border-radius: 16px 16px 0 0;
   }
 }

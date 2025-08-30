@@ -6,10 +6,13 @@ import SearchResults from "../SearchResults/SearchResults";
 function Main({
   isLoggedIn,
   onSearch,
-  articles = [],
-  isLoading = false,
-  error = "",
-  hasSearched = false,
+  articles,
+  isLoading,
+  error,
+  hasSearched,
+  onToggleSave,
+  getSavedByUrl,
+  currentUser,
 }) {
   return (
     <main className="main">
@@ -20,6 +23,9 @@ function Main({
         error={error}
         hasSearched={hasSearched}
         isLoggedIn={isLoggedIn}
+        onToggleSave={onToggleSave}
+        getSavedByUrl={getSavedByUrl}
+        currentUser={currentUser}
       />
       <About />
     </main>

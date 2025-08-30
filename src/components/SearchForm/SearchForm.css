@@ -81,9 +81,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .search-form {
+    padding: 120px 0 48px;
+  }
 }
 
 @media screen and (max-width: 645px) {
+  .search-form {
+    padding: 87px 0 32px;
+  }
+
   .search-form__form {
     position: relative;
     display: flex;

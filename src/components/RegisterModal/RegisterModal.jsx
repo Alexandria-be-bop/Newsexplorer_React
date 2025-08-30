@@ -2,11 +2,15 @@ import { useId, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./RegisterModal.css";
 
-export default function RegisterModal({
+function RegisterModal({
   handleRegistration,
   activeModal,
   closeActiveModal,
   onLoginClick,
+  showSuccess,
+  onCloseSuccess,
+  registerError,
+  clearRegisterError,
 }) {
   const [emailError, setEmailError] = useState("");
 
@@ -18,7 +22,6 @@ export default function RegisterModal({
     email: "",
     password: "",
     name: "",
-    avatar: "",
   });
 
   const handleChange = (e) => {
@@ -29,25 +32,13 @@ export default function RegisterModal({
   const onRegistration = (e) => {
     e.preventDefault();
     handleRegistration(data);
-    setData({ email: "", password: "", name: "", avatar: "" });
+    setData({ email: "", password: "", name: "" });
   };
 
   const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const isAvatarValid = (avatar) => {
-    try {
-      new URL(avatar);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
   const isFormValid =
-    isEmailValid(data.email) &&
-    data.password.trim() &&
-    data.name.trim() &&
-    isAvatarValid(data.avatar);
+    isEmailValid(data.email) && data.password.trim() && data.name.trim();
 
   const handleEmailValidation = (e) => {
     if (isEmailValid(e.target.value)) {
@@ -58,72 +49,85 @@ export default function RegisterModal({
   };
 
   return (
-    <ModalWithForm
-      title="Sign Up"
-      buttonText="Sign Up"
-      altButtonText="Log in"
-      altButtonOnClick={onLoginClick}
-      activeModal={activeModal}
-      closeActiveModal={closeActiveModal}
-      onSubmit={onRegistration}
-      disabled={!isFormValid}
-    >
-      <label
-        htmlFor={emailId}
-        className="modal__label modal__error-field"
+    <>
+      <ModalWithForm
+        title="Sign Up"
+        buttonText="Sign Up"
+        altButtonText="Log in"
+        altButtonOnClick={onLoginClick}
+        activeModal={activeModal}
+        closeActiveModal={closeActiveModal}
+        onSubmit={onRegistration}
+        disabled={!isFormValid}
+        onMouseDown={clearRegisterError}
       >
-        Email
-        <input
-          id={emailId}
-          name="email"
-          type="email"
-          placeholder="Enter email"
-          value={data.email}
-          onChange={handleChange}
-          className="modal__input"
-          required
-          onBlur={handleEmailValidation}
-          autoComplete="email"
-        />
-        <p className={`modal__invalid-email`}>{emailError}</p>
-      </label>
+        <label
+          htmlFor={emailId}
+          className="modal__label modal__error-field"
+        >
+          Email
+          <input
+            id={emailId}
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            value={data.email}
+            onChange={handleChange}
+            className="modal__input"
+            required
+            onBlur={handleEmailValidation}
+            autoComplete="email"
+          />
+          <p className={`modal__invalid-input`}>{emailError}</p>
+        </label>
 
-      <label
-        htmlFor={passwordId}
-        className="modal__label"
-      >
-        Password
-        <input
-          id={passwordId}
-          name="password"
-          type="password"
-          placeholder="Enter password"
-          value={data.password}
-          onChange={handleChange}
-          className="modal__input"
-          required
-          autoComplete="new-password"
-        />
-      </label>
+        <label
+          htmlFor={passwordId}
+          className="modal__label"
+        >
+          Password
+          <input
+            id={passwordId}
+            name="password"
+            type="password"
+            placeholder="Enter password"
+            value={data.password}
+            onChange={handleChange}
+            className="modal__input"
+            required
+            autoComplete="new-password"
+          />
+        </label>
 
-      <label
-        htmlFor={nameId}
-        className="modal__label"
-      >
-        Username
-        <input
-          id={nameId}
-          name="name"
-          type="text"
-          placeholder="Enter your username"
-          value={data.name}
-          onChange={handleChange}
-          className="modal__input"
-          required
-          maxLength={30}
-          autoComplete="name"
-        />
-      </label>
-    </ModalWithForm>
+        <label
+          htmlFor={nameId}
+          className="modal__label"
+        >
+          Username
+          <input
+            id={nameId}
+            name="name"
+            type="text"
+            placeholder="Enter your username"
+            value={data.name}
+            onChange={handleChange}
+            className="modal__input"
+            required
+            maxLength={30}
+            autoComplete="name"
+          />
+        </label>
+        <p className="modal__invalid-field">{registerError}</p>
+      </ModalWithForm>
+      <ModalWithForm
+        title="Registration successfully completed!"
+        altButtonText="Sign in"
+        altButtonOnClick={onCloseSuccess}
+        activeModal={showSuccess}
+        closeActiveModal={onCloseSuccess}
+      />
+    </>
   );
 }
+
+export default RegisterModal;

@@ -1,9 +1,113 @@
+.saved-articles {
+  padding: 146px 104px 56px;
+}
+
 .saved-articles__title {
   font-family: Roboto;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   color: #1a1b2280;
+  margin: 0 0 30px;
+}
+
+.saved-articles__user-info {
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  max-width: 530px;
+  color: #1a1b22;
+  margin: 0 0 8px;
+}
+
+.saved-articles__keyword {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
   margin: 0;
-  padding-top: 120px;
+}
+
+.saved-articles__keywords {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.saved-articles__message {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.saved-articles__content {
+  margin-top: 40px;
+}
+
+.saved-articles__cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 62px 106px 62px;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  background-color: #f5f6f7;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-articles {
+    padding: 116px 40px 32px;
+  }
+
+  .saved-articles__title {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__user-info {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__cards {
+    gap: 8px;
+    padding: 32px 40px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .saved-articles {
+    padding: 90px 16px 32px 16px;
+  }
+
+  .saved-articles__title {
+    font-size: 12px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  .saved-articles__user-info {
+    font-size: 30px;
+    line-height: 34px;
+    margin-bottom: 50px;
+  }
+
+  .saved-articles__cards {
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px 16px 12px 16px;
+  }
 }

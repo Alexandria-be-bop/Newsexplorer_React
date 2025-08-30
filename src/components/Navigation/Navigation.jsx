@@ -5,11 +5,12 @@ import logoutBlack from "../../assets/logout_black.svg";
 import menuDark from "../../assets/menu_dark.svg";
 import menuLight from "../../assets/menu_light.svg";
 import { useMediaQuery } from "react-responsive";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Navigation({ isLoggedIn, onLoginClick, theme }) {
-  const currentUser = { name: "Elise" };
+function Navigation({ isLoggedIn, onLoginClick, theme, onLogout }) {
+  const { currentUser } = useContext(CurrentUserContext);
   const isMobile = useMediaQuery({ query: "(max-width: 590px)" });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -42,6 +43,8 @@ function Navigation({ isLoggedIn, onLoginClick, theme }) {
             theme={theme}
             isOpen={isMobileMenuOpen}
             onClose={closeMobileMenu}
+            currentUser={currentUser}
+            onLogout={onLogout}
           />
         </>
       )}
@@ -66,11 +69,14 @@ function Navigation({ isLoggedIn, onLoginClick, theme }) {
               >
                 Saved articles
               </NavLink>
-              <button className="nav__button nav__button-signin">
-                {currentUser.name}
+              <button
+                className="nav__button nav__button-signin"
+                onClick={onLogout}
+              >
+                {currentUser?.name || "User"}
                 <img
                   src={theme === "nav--black" ? logoutBlack : logoutWhite}
-                  alt="union sign"
+                  alt="logout image"
                 />
               </button>
             </>

@@ -2,10 +2,17 @@ import { NavLink } from "react-router-dom";
 import "./NavigationMobile.css";
 import logoutWhite from "../../assets/logout_white.svg";
 import closeBtn from "../../assets/close-btn.svg";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function NavigationMobile({ isLoggedIn, onLoginClick, isOpen, onClose }) {
-  const currentUser = { name: "Elise" };
+function NavigationMobile({
+  isLoggedIn,
+  onLoginClick,
+  isOpen,
+  onClose,
+  onLogout,
+}) {
+  const { currentUser } = useContext(CurrentUserContext);
 
   useEffect(() => {
     const handleEscClose = (e) => e.key === "Escape" && onClose();
@@ -60,7 +67,10 @@ function NavigationMobile({ isLoggedIn, onLoginClick, isOpen, onClose }) {
                 >
                   Saved articles
                 </NavLink>
-                <button className="nav__button nav__signin-mobile">
+                <button
+                  className="nav__button nav__signin-mobile"
+                  onClick={onLogout}
+                >
                   {currentUser.name}
                   <img
                     src={logoutWhite}
