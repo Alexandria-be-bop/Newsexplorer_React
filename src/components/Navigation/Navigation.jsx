@@ -30,7 +30,7 @@ function Navigation({
   };
 
   return (
-    <>
+    <nav className="nav">
       {isMobile && (
         <>
           {!activeModal && (
@@ -99,7 +99,7 @@ function Navigation({
           )}
         </div>
       )}
-    </>
+    </nav>
   );
 }
 
