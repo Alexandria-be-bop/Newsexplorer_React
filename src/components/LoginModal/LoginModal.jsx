@@ -22,7 +22,6 @@ function LoginModal({
     if (handleLogin) {
       handleLogin(data);
     }
-    setData({ email: "", password: "" });
   };
 
   // clear login fields when not active
