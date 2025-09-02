@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -208,7 +208,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <CurrentUserContext.Provider value={{ currentUser }}>
         <div className="page">
           <div className="page__content">
@@ -270,7 +270,7 @@ function App() {
           <Footer />
         </div>
       </CurrentUserContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
