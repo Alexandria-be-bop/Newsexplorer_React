@@ -7,10 +7,10 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function NavigationMobile({
   isLoggedIn,
-  onLoginClick,
+  openLoginModal,
   isOpen,
   onClose,
-  onLogout,
+  handleLogout,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
 
@@ -69,7 +69,7 @@ function NavigationMobile({
                 </NavLink>
                 <button
                   className="nav__button nav__signin-mobile"
-                  onClick={onLogout}
+                  onClick={handleLogout}
                 >
                   {currentUser.name}
                   <img
@@ -82,7 +82,7 @@ function NavigationMobile({
               <button
                 className="nav__mobile-button nav__signin-mobile"
                 onClick={() => {
-                  onLoginClick();
+                  openLoginModal();
                   onClose();
                 }}
               >

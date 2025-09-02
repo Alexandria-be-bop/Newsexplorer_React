@@ -5,18 +5,18 @@ import SearchResults from "../SearchResults/SearchResults";
 
 function Main({
   isLoggedIn,
-  onSearch,
+  searchArticles,
   articles,
   isLoading,
   error,
   hasSearched,
   onToggleSave,
-  getSavedByUrl,
+  getSavedArticlesByUrlMap,
   currentUser,
 }) {
   return (
     <main className="main">
-      <SearchForm onSearch={onSearch} />
+      <SearchForm searchArticles={searchArticles} />
       <SearchResults
         articles={articles}
         isLoading={isLoading}
@@ -24,7 +24,7 @@ function Main({
         hasSearched={hasSearched}
         isLoggedIn={isLoggedIn}
         onToggleSave={onToggleSave}
-        getSavedByUrl={getSavedByUrl}
+        getSavedByUrl={getSavedArticlesByUrlMap}
         currentUser={currentUser}
       />
       <About />

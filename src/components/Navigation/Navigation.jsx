@@ -12,9 +12,9 @@ import closeBtn from "../../assets/close-btn.svg";
 
 function Navigation({
   isLoggedIn,
-  onLoginClick,
+  openLoginModal,
   theme,
-  onLogout,
+  handleLogout,
   activeModal,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -47,12 +47,12 @@ function Navigation({
           )}
           <NavigationMobile
             isLoggedIn={isLoggedIn}
-            onLoginClick={onLoginClick}
+            openLoginModal={openLoginModal}
             theme={theme}
             isOpen={isMobileMenuOpen}
             onClose={closeMobileMenu}
             currentUser={currentUser}
-            onLogout={onLogout}
+            handleLogout={handleLogout}
           />
         </>
       )}
@@ -79,7 +79,7 @@ function Navigation({
               </NavLink>
               <button
                 className="nav__button nav__button-signin"
-                onClick={onLogout}
+                onClick={handleLogout}
               >
                 {currentUser?.name || "User"}
                 <img
@@ -92,7 +92,7 @@ function Navigation({
             <>
               <button
                 className="nav__button nav__button-signin"
-                onClick={onLoginClick}
+                onClick={openLoginModal}
               >
                 Sign in
               </button>

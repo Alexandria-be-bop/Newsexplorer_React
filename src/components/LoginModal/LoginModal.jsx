@@ -6,7 +6,7 @@ function LoginModal({
   activeModal,
   closeActiveModal,
   handleLogin,
-  newUserRegistration,
+  openRegistrationModal,
   loginError,
 }) {
   const [data, setData] = useState({ email: "", password: "" });
@@ -53,7 +53,7 @@ function LoginModal({
       title="Sign in"
       buttonText="Sign in"
       altButtonText="Sign up"
-      altButtonOnClick={newUserRegistration}
+      altButtonOnClick={openRegistrationModal}
       activeModal={activeModal}
       closeActiveModal={closeActiveModal}
       onSubmit={handleSubmit}

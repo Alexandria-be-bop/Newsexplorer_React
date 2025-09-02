@@ -38,7 +38,7 @@ let savedArticles = [
 ];
 
 // Get all saved articles for the current user
-export function getItems() {
+export function getSavedArticles() {
   return new Promise((resolve, reject) => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -94,8 +94,8 @@ export function deleteArticle(articleId) {
   });
 }
 
-// Check if an article is saved by URL
-export function checkIfSaved(articleUrl) {
+// Get saved status by article URL
+export function getArticleSaveStatus(articleUrl) {
   return new Promise((resolve, reject) => {
     const token = localStorage.getItem("jwt");
     if (!token) {
@@ -112,8 +112,8 @@ export function checkIfSaved(articleUrl) {
 }
 
 // Create a map of saved articles by URL
-export function getSavedByUrl() {
-  return getItems().then((articles) => {
+export function getSavedArticlesByUrlMap() {
+  return getSavedArticles().then((articles) => {
     const map = new Map();
     articles.forEach((a) => {
       if (a && a.url) map.set(a.url, a);

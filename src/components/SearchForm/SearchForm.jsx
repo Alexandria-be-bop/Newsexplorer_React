@@ -1,17 +1,17 @@
 import { useState } from "react";
 import "./SearchForm.css";
 
-function SearchForm({ onSearch }) {
-  const [q, setQ] = useState("");
+function SearchForm({ searchArticles }) {
+  const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!q.trim()) {
+    if (!searchQuery.trim()) {
       return setError("Please enter a keyword");
     }
     setError("");
-    onSearch && onSearch(q.trim());
+    searchArticles && searchArticles(searchQuery.trim());
   };
 
   return (
@@ -29,8 +29,8 @@ function SearchForm({ onSearch }) {
           <input
             className="search-form__input"
             placeholder="Enter topic"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           ></input>
           <button
             type="submit"

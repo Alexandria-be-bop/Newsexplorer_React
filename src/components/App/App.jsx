@@ -8,15 +8,15 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { searchNews } from "../../utils/newsApi";
+import { searchArticles } from "../../utils/newsApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import * as auth from "../../utils/auth";
 import {
-  getItems,
+  getSavedArticles,
   saveArticle,
   deleteArticle,
-  checkIfSaved,
-  getSavedByUrl,
+  getArticleSaveStatus,
+  getSavedArticlesByUrlMap,
 } from "../../utils/userApi";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
   const [registerError, setRegisterError] = useState("");
   const [savedArticles, setSavedArticles] = useState([]);
   const [currentSearchKeyword, setCurrentSearchKeyword] = useState("");
-  const [RegistrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({
     _id: "",
@@ -95,7 +95,7 @@ function App() {
   };
 
   const loadSavedArticles = () => {
-    getItems()
+    getSavedArticles()
       .then((items) => {
         setSavedArticles(Array.isArray(items) ? items : []);
       })
@@ -149,7 +149,7 @@ function App() {
   const handleToggleSave = (article) => {
     if (!isLoggedIn || !article) return Promise.resolve();
 
-    return checkIfSaved(article.url)
+    return getArticleSaveStatus(article.url)
       .then(({ isSaved, savedArticle }) => {
         if (isSaved && savedArticle) {
           return handleDeleteArticle(savedArticle._id);
@@ -179,11 +179,11 @@ function App() {
           .catch((err) => console.log(err));
   };
 
-  const onLoginClick = () => {
+  const openLoginModal = () => {
     setActiveModal("login-modal");
   };
 
-  const newUserRegistration = () => {
+  const openRegistrationModal = () => {
     setActiveModal("register");
   };
 
@@ -191,13 +191,13 @@ function App() {
     setActiveModal("");
   };
 
-  const onSearch = async (topic) => {
+  const searchArticlesByTopic = async (topic) => {
     setHasSearched(true);
     setIsLoading(true);
     setError("");
     setCurrentSearchKeyword(topic);
     try {
-      const data = await searchNews(topic);
+      const data = await searchArticles(topic);
       setArticles(Array.isArray(data.articles) ? data.articles : []);
     } catch {
       setArticles([]);
@@ -214,8 +214,8 @@ function App() {
           <div className="page__content">
             <Header
               isLoggedIn={isLoggedIn}
-              onLoginClick={onLoginClick}
-              onLogout={handleLogout}
+              openLoginModal={openLoginModal}
+              handleLogout={handleLogout}
               activeModal={activeModal}
             />
             <Routes>
@@ -223,14 +223,14 @@ function App() {
                 path="/"
                 element={
                   <Main
-                    onSearch={onSearch}
+                    searchArticles={searchArticlesByTopic}
                     isLoggedIn={isLoggedIn}
                     articles={articles}
                     isLoading={isLoading}
                     error={error}
                     hasSearched={hasSearched}
                     onToggleSave={handleToggleSave}
-                    getSavedByUrl={getSavedByUrl}
+                    getSavedArticlesByUrlMap={getSavedArticlesByUrlMap}
                     currentUser={currentUser}
                   />
                 }
@@ -253,7 +253,7 @@ function App() {
             activeModal={activeModal === "login-modal"}
             closeActiveModal={closeActiveModal}
             handleLogin={handleLogin}
-            newUserRegistration={newUserRegistration}
+            openRegistrationModal={openRegistrationModal}
             loginError={loginError}
             clearLoginError={() => setLoginError("")}
           />
@@ -261,9 +261,9 @@ function App() {
             activeModal={activeModal === "register"}
             handleRegistration={handleRegistration}
             closeActiveModal={closeActiveModal}
-            newUserRegistration={newUserRegistration}
-            onLoginClick={onLoginClick}
-            showSuccess={RegistrationSuccess}
+            newUserRegistration={openRegistrationModal}
+            openLoginModal={openLoginModal}
+            showSuccess={registrationSuccess}
             onCloseSuccess={() => setRegistrationSuccess(false)}
             registerError={registerError}
             clearRegisterError={() => setRegisterError("")}

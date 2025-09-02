@@ -2,7 +2,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import { useLocation } from "react-router-dom";
 
-function Header({ isLoggedIn, onLoginClick, onLogout, activeModal }) {
+function Header({ isLoggedIn, openLoginModal, handleLogout, activeModal }) {
   const { pathname } = useLocation();
   const theme = pathname === "/saved-news" ? "nav--black" : "";
   const headerTheme = pathname === "/saved-news" ? "header--black" : "";
@@ -13,8 +13,8 @@ function Header({ isLoggedIn, onLoginClick, onLogout, activeModal }) {
       <Navigation
         theme={theme}
         isLoggedIn={isLoggedIn}
-        onLoginClick={onLoginClick}
-        onLogout={onLogout}
+        openLoginModal={openLoginModal}
+        handleLogout={handleLogout}
         activeModal={activeModal}
       />
     </div>

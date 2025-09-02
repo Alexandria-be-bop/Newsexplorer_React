@@ -6,7 +6,7 @@ function RegisterModal({
   handleRegistration,
   activeModal,
   closeActiveModal,
-  onLoginClick,
+  openLoginModal,
   showSuccess,
   onCloseSuccess,
   registerError,
@@ -29,7 +29,7 @@ function RegisterModal({
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onRegistration = (e) => {
+  const submitRegistrationForm = (e) => {
     e.preventDefault();
     handleRegistration(data);
     setData({ email: "", password: "", name: "" });
@@ -54,10 +54,10 @@ function RegisterModal({
         title="Sign Up"
         buttonText="Sign Up"
         altButtonText="Log in"
-        altButtonOnClick={onLoginClick}
+        altButtonOnClick={openLoginModal}
         activeModal={activeModal}
         closeActiveModal={closeActiveModal}
-        onSubmit={onRegistration}
+        onSubmit={submitRegistrationForm}
         disabled={!isFormValid}
         onMouseDown={clearRegisterError}
       >
