@@ -39,6 +39,7 @@ function ModalWithForm({
           type="button"
         >
           <img
+          className="modal__close-img"
             src={closeBtn}
             alt="X"
           />

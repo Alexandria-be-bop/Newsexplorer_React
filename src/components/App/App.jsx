@@ -133,7 +133,7 @@ function App() {
     return deleteArticle(id)
       .then((result) => {
         if (result?.success !== false) {
-          loadSavedArticles(); 
+          loadSavedArticles();
         }
       })
       .catch((error) => {
@@ -216,6 +216,7 @@ function App() {
               isLoggedIn={isLoggedIn}
               onLoginClick={onLoginClick}
               onLogout={handleLogout}
+              activeModal={activeModal}
             />
             <Routes>
               <Route

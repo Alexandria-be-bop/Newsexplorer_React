@@ -8,8 +8,15 @@ import { useMediaQuery } from "react-responsive";
 import { useContext, useState } from "react";
 import NavigationMobile from "../NavigationMobile/NavigationMobile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import closeBtn from "../../assets/close-btn.svg";
 
-function Navigation({ isLoggedIn, onLoginClick, theme, onLogout }) {
+function Navigation({
+  isLoggedIn,
+  onLoginClick,
+  theme,
+  onLogout,
+  activeModal,
+}) {
   const { currentUser } = useContext(CurrentUserContext);
   const isMobile = useMediaQuery({ query: "(max-width: 590px)" });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,17 +33,18 @@ function Navigation({ isLoggedIn, onLoginClick, theme, onLogout }) {
     <>
       {isMobile && (
         <>
-          <button
-            className="nav__button nav__dropdown"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <img
-              src={theme === "nav--black" ? menuDark : menuLight}
-              alt="Menu"
-            />
-          </button>
-
+          {!activeModal && (
+            <button
+              className="nav__button nav__dropdown"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              <img
+                src={theme === "nav--black" ? menuDark : menuLight}
+                alt="Menu"
+              />
+            </button>
+          )}
           <NavigationMobile
             isLoggedIn={isLoggedIn}
             onLoginClick={onLoginClick}
