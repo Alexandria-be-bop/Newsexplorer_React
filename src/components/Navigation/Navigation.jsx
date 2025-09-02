@@ -51,7 +51,6 @@ function Navigation({
             theme={theme}
             isOpen={isMobileMenuOpen}
             onClose={closeMobileMenu}
-            currentUser={currentUser}
             handleLogout={handleLogout}
           />
         </>

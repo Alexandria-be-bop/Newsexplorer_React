@@ -52,6 +52,7 @@ function SearchResults({
           <img
             className="search__not-found-img"
             src={notFound}
+            alt="topic not found"
           />
           <h3 className="search__not-found-title">Nothing Found</h3>
           <p className="search__not-found-des">

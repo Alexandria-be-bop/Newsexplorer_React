@@ -8,7 +8,7 @@ function Header({ isLoggedIn, openLoginModal, handleLogout, activeModal }) {
   const headerTheme = pathname === "/saved-news" ? "header--black" : "";
 
   return (
-    <div className="header">
+    <header className="header">
       <h1 className={`header__title ${headerTheme}`}>NewsExplorer</h1>
       <Navigation
         theme={theme}
@@ -17,7 +17,7 @@ function Header({ isLoggedIn, openLoginModal, handleLogout, activeModal }) {
         handleLogout={handleLogout}
         activeModal={activeModal}
       />
-    </div>
+    </header>
   );
 }
 

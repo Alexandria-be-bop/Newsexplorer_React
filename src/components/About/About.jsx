@@ -3,7 +3,7 @@ import author from "../../assets/author.jpg";
 
 function About() {
   return (
-    <div className="about">
+    <section className="about">
       <img
         src={author}
         className="about__image"
@@ -27,7 +27,7 @@ function About() {
           expectations.
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

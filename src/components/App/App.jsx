@@ -231,7 +231,6 @@ function App() {
                     hasSearched={hasSearched}
                     onToggleSave={handleToggleSave}
                     getSavedArticlesByUrlMap={getSavedArticlesByUrlMap}
-                    currentUser={currentUser}
                   />
                 }
               />

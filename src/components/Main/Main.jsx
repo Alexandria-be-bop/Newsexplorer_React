@@ -12,7 +12,6 @@ function Main({
   hasSearched,
   onToggleSave,
   getSavedArticlesByUrlMap,
-  currentUser,
 }) {
   return (
     <main className="main">
@@ -25,7 +24,6 @@ function Main({
         isLoggedIn={isLoggedIn}
         onToggleSave={onToggleSave}
         getSavedByUrl={getSavedArticlesByUrlMap}
-        currentUser={currentUser}
       />
       <About />
     </main>
