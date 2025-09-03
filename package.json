@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://alexandria-be-bop.github.io/stage-1-frontend-and-api/",
+  "homepage": "https://alexandria-be-bop.github.io/Newsexplorer_React/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
