@@ -96,10 +96,14 @@ export function deleteArticle(articleId) {
 
 // Get saved status by article URL
 export function getArticleSaveStatus(articleUrl) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      reject(new Error("No authentication token found. Please log in."));
+      // Return not saved if no token
+      resolve({
+        isSaved: false,
+        savedArticle: null,
+      });
       return;
     }
 
@@ -113,11 +117,23 @@ export function getArticleSaveStatus(articleUrl) {
 
 // Create a map of saved articles by URL
 export function getSavedArticlesByUrlMap() {
-  return getSavedArticles().then((articles) => {
-    const map = new Map();
-    articles.forEach((a) => {
-      if (a && a.url) map.set(a.url, a);
+  return new Promise((resolve) => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      // Return empty map if user is not logged in
+      resolve(new Map());
+      return;
+    }
+    
+    getSavedArticles().then((articles) => {
+      const map = new Map();
+      articles.forEach((a) => {
+        if (a && a.url) map.set(a.url, a);
+      });
+      resolve(map);
+    }).catch(() => {
+      // Return empty map on error
+      resolve(new Map());
     });
-    return map;
   });
 }

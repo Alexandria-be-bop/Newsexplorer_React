@@ -23,14 +23,19 @@ export async function searchArticles(query) {
     pageSize: "100",
   });
 
-  const url = `${newsApiBaseUrl}?${params.toString()}`;
-
-  const key = {};
-
-  // Only add API key header for production use(direct News API calls)
-  if (!import.meta.env.DEV) {
-    key.headers = { "X-Api-Key": NEWS_API_KEY };
+  // Add API key as query parameter for development
+  if (import.meta.env.DEV) {
+    params.append("apiKey", NEWS_API_KEY);
   }
 
-  return fetch(url, key).then(checkApiResponse);
+  const url = `${newsApiBaseUrl}?${params.toString()}`;
+
+  const options = {};
+
+  // Add API key header for production
+  if (!import.meta.env.DEV) {
+    options.headers = { "X-Api-Key": NEWS_API_KEY };
+  }
+
+  return fetch(url, options).then(checkApiResponse);
 }
