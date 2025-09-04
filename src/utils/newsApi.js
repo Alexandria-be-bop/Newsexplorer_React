@@ -23,10 +23,6 @@ export async function searchArticles(query) {
     pageSize: "100",
   });
 
-  if (import.meta.env.DEV) {
-    params.append("apiKey", NEWS_API_KEY);
-  }
-
   const url = `${newsApiBaseUrl}?${params.toString()}`;
 
   const key = {};
