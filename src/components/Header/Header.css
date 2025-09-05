@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 104px 26px;
+  border-bottom: 1px solid #d1d2d6;
+  box-sizing: border-box;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.header__title {
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+  color: white;
+}
+
+.header--black {
+  color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 22px 40px 20px 40px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .header {
+    padding: 16px;
+  }
+}

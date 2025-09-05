@@ -1,0 +1,23 @@
+.main__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main__results_actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.main__results-button {
+  padding: 16px 32px;
+  border-radius: 100px;
+  background: #2f71e5;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}

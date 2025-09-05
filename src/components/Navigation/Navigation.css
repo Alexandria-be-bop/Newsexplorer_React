@@ -1,0 +1,67 @@
+.nav__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+  padding: 0;
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile dropdown button css */
+.nav__dropdown {
+  padding-right: 16px;
+}
+
+/* desktop / mobile css */
+.nav__button--active::after {
+  content: "";
+  position: absolute;
+  bottom: -26px;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.nav__button-signin {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border: solid 1px;
+  border-radius: 100px;
+  padding: 12px;
+  width: 152px;
+}
+
+.nav__desktop {
+  display: flex;
+  gap: 42px;
+}
+
+/* black theme for saved articles */
+.nav--black .nav__button {
+  color: #000;
+  text-decoration: none;
+}
+.nav--black .nav__button--active::after {
+  background: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__button--active::after {
+    bottom: -20px;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .nav__button--active::after {
+    bottom: -6px;
+  }
+}
