@@ -51,14 +51,12 @@ function NewsCard({
     ? {
         icon: trashIcon,
         alt: "Delete article",
-        title: "Remove from saved",
         className: "card__button",
         tooltip: "Remove from saved",
       }
     : {
         icon: isSaved ? bookmarkFilled : bookmark,
         alt: isSaved ? "Remove bookmark" : "Save article",
-        title: isLoggedIn ? "" : "Sign in to save articles",
         className: `card__button ${isSaved ? "card__button--saved" : ""}`,
         tooltip: isLoggedIn
           ? isSaved
@@ -85,7 +83,6 @@ function NewsCard({
         <button
           className={button.className}
           onClick={handleButtonClick}
-          title={button.title}
         >
           <img
             className="card__button-img"
